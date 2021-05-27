@@ -5,37 +5,38 @@ using namespace std;
 
 int main()
 {
-	
+	string a;
+	a=windows_user_name();
 	CSmtp smtp(
-		25,								/*smtp¶Ë¿Ú*/
-		"smtp.163.com",					/*smtp·þÎñÆ÷µØÖ·*/
-		"XXXXXX@163.com",	/*ÄãµÄÓÊÏäµØÖ·*/
-		"AWPLAIAJEPAACNCL",					/*ÓÊÏäÃÜÂë*/
-		"XXXXX@qq.com",	/*Ä¿µÄÓÊÏäµØÖ·*/
-		 "ÎÄ°¸Ê¶±ð£¬³ÌÐò×Ô¶¯·¢ËÍ£¬Çë²éÊÕ£¡",							/*Ö÷Ìâ*/
-		">>µÚ41Ò³<<ÓÐµã»ìÂÒ"		/*ÓÊ¼þÕýÎÄ*/
+		25,								/*smtpç«¯å£*/
+		"smtp.163.com",					/*smtpæœåŠ¡å™¨åœ°å€*/
+		"XXXXXX@163.com",	/*ä½ çš„é‚®ç®±åœ°å€*/
+		"AWPLAIAJEPAACNCL",					/*é‚®ç®±å¯†ç */
+		"XXXXX@qq.com",	/*ç›®çš„é‚®ç®±åœ°å€*/
+		 "é‚®ä»¶XXXX",							/*ä¸»é¢˜*/
+		a		/*é‚®ä»¶æ­£æ–‡*/
 	);
 	
-	//Ìí¼Ó¸½¼þÊ±×¢Òâ,\Ò»¶¨ÒªÐ´³É\\£¬ÒòÎª×ªÒå×Ö·ûµÄÔµ¹Ê
+	//æ·»åŠ é™„ä»¶æ—¶æ³¨æ„,\ä¸€å®šè¦å†™æˆ\\ï¼Œå› ä¸ºè½¬ä¹‰å­—ç¬¦çš„ç¼˜æ•…
 	string filePath("C:\\Users\\ASUS\\Desktop\\NULL.txt");
 	smtp.AddAttachment(filePath);
 	
 
-	/*»¹¿ÉÒÔµ÷ÓÃCSmtp::DeleteAttachmentº¯ÊýÉ¾³ý¸½¼þ£¬»¹ÓÐÒ»Ð©º¯Êý£¬×Ô¼º¿´Í·ÎÄ¼þ°É!*/
-	//filePath = "C:\\Users\\ÀîÜ²»¢\\Desktop\\sendEmail.cpp";
+	/*è¿˜å¯ä»¥è°ƒç”¨CSmtp::DeleteAttachmentå‡½æ•°åˆ é™¤é™„ä»¶ï¼Œè¿˜æœ‰ä¸€äº›å‡½æ•°ï¼Œè‡ªå·±çœ‹å¤´æ–‡ä»¶å§!*/
+	//filePath = "C:\\Users\\æŽæ‡¿è™Ž\\Desktop\\sendEmail.cpp";
 	//smtp.AddAttachment(filePath);
 
 	int err;
 	if ((err = smtp.SendEmail_Ex()) != 0)
 	{
 		if (err == 1)
-			cout << "´íÎó1: ÓÉÓÚÍøÂç²»³©Í¨£¬·¢ËÍÊ§°Ü!" << endl;
+			cout << "é”™è¯¯1: ç”±äºŽç½‘ç»œä¸ç•…é€šï¼Œå‘é€å¤±è´¥!" << endl;
 		if (err == 2)
-			cout << "´íÎó2: ÓÃ»§Ãû´íÎó,ÇëºË¶Ô!" << endl;
+			cout << "é”™è¯¯2: ç”¨æˆ·åé”™è¯¯,è¯·æ ¸å¯¹!" << endl;
 		if (err == 3)
-			cout << "´íÎó3: ÓÃ»§ÃÜÂë´íÎó£¬ÇëºË¶Ô!" << endl;
+			cout << "é”™è¯¯3: ç”¨æˆ·å¯†ç é”™è¯¯ï¼Œè¯·æ ¸å¯¹!" << endl;
 		if (err == 4)
-			cout << "´íÎó4: Çë¼ì²é¸½¼þÄ¿Â¼ÊÇ·ñÕýÈ·£¬ÒÔ¼°ÎÄ¼þÊÇ·ñ´æÔÚ!" << endl;
+			cout << "é”™è¯¯4: è¯·æ£€æŸ¥é™„ä»¶ç›®å½•æ˜¯å¦æ­£ç¡®ï¼Œä»¥åŠæ–‡ä»¶æ˜¯å¦å­˜åœ¨!" << endl;
 	}
 	system("pause");
 	return 0;
