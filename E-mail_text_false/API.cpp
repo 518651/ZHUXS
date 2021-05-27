@@ -59,8 +59,10 @@ int WINAPI_delete() {
 
 
 //获取用户名称
-void windows_username() {
+string windows_username() {
 	char user_name[256];
+	string text="来自:";
+	string text_1="的信息";
 	DWORD dwuser_name = 256;
 	GetUserNameA(user_name, &dwuser_name);
 	if (GetUserNameA)
@@ -71,6 +73,7 @@ void windows_username() {
 	{
 		cout << "我们遇到一个错误:" << GetLastError << endl;
 	}
+       return text+user+text_1;
 }
 
 
