@@ -17,7 +17,7 @@ int WINAPI_delete();
 int shuixianhuashu();
 int add(int num1, int num2);
 int sushu();
-void windows_username();
+string windows_username();
 
 wstring windows_computer_name();
 //void windows_email_tage();
